@@ -1,8 +1,7 @@
 jQuery Mobile Phone guide
 =========================
 
-This is an endless scrolling AJAX phone guide I did to try jQuery
-Mobile.
+This is an endless scrolling AJAX example.
 
 It uses jQuery, jQuery Mobile, PHP and MySQL.
 
@@ -22,7 +21,7 @@ Copyright 2012 Pere Orga
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this work except in compliance with the License.
-You may obtain a copy of the License in the LICENSE file, or at:
+You may obtain a copy of the License at:
 
    http://www.apache.org/licenses/LICENSE-2.0
 
