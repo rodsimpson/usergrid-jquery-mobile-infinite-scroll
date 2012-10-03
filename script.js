@@ -13,15 +13,19 @@ $(function() {
     $.getJSON('?n=' + encodeURIComponent($input.val()) + '&l=' + limit, function(data) {
       var display = limit === 0 ? '>' : ' style="display:none">';
       var temp    = '';
+      var i       = 0;
       $.each(data, function(key, val) {
         temp += '<li' + display + val.n + '<div style="text-align:right">' + val.t + '</div></li>';
+        ++i;
       });
       if (limit === 0) {             // keyup
         if (async_check !== count) { // not the last keyup, quit
           return;
         }
-        inc += 25;
-        get_contact_json(inc);
+        if (i === 25) {
+            inc += 25;
+            get_contact_json(inc);
+        }
         $llista.html('');
       }
       $llista.append(temp).listview('refresh');
