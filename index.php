@@ -1,4 +1,4 @@
-<?
+<?php
 if (isset($_GET['n'])) {
     mysql_connect('localhost', 'USER', 'PASSWORD') and mysql_select_db('DATABASE') or die("database error");
     mysql_set_charset('utf8'); 
