@@ -8,13 +8,13 @@ $app->get('/entries(/:search(/:limit))', 'getEntries');
 $app->run();
 
 function getConnection() {
-	$dbhost = '127.0.0.1';
-	$dbuser = 'username';
-	$dbpass = 'password';
-	$dbname = 'database';
-	$db = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);
-	$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-	return $db;
+    $dbhost = '127.0.0.1';
+    $dbuser = 'username';
+    $dbpass = 'password';
+    $dbname = 'database';
+    $db = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    return $db;
 }
 
 function getEntries($search = "", $limit = 0) {
@@ -29,7 +29,7 @@ function getEntries($search = "", $limit = 0) {
         $query->execute();
         $entries = $query->fetchAll(PDO::FETCH_OBJ);
 
-        print json_encode($entries);
+        echo json_encode($entries);
 
     } catch(PDOException $e) {
         echo '{"error":{"text":' . $e->getMessage() . '}}';
