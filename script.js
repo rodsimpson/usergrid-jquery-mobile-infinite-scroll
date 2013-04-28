@@ -1,21 +1,25 @@
-/* Pere Orga <pere@orga.cat>, 2012 */
-
 $(function() {
 
-  var inc       = 0;
-  var count     = 0;
+  var inc = 0;
+  var count = 0;
   var didScroll = false;
-  var $input    = $('#inputsearch');
-  var $llista   = $('#llista');
+  var $input = $('#inputsearch');
+  var $list = $('#list');
 
   function get_contact_json(limit) {
     var async_check = limit || ++count;
-    $.getJSON('?n=' + encodeURIComponent($input.val()) + '&l=' + limit, function(data) {
+    var url = 'api/entries';
+    var search = encodeURIComponent($input.val());
+    if (search) {
+         url += '/' + search + '/' + limit;
+    }
+
+    $.getJSON(url, function(data) {
       var display = limit === 0 ? '>' : ' style="display:none">';
-      var temp    = '';
-      var i       = 0;
+      var temp = '';
+      var i = 0;
       $.each(data, function(key, val) {
-        temp += '<li' + display + val.n + '<div style="text-align:right">' + val.t + '</div></li>';
+        temp += '<li' + display + val.n + '<div style="text-align:right">' + val.p + '</div></li>';
         ++i;
       });
       if (limit === 0) {             // keyup
@@ -26,9 +30,9 @@ $(function() {
             inc += 25;
             get_contact_json(inc);
         }
-        $llista.html('');
+        $list.html('');
       }
-      $llista.append(temp).listview('refresh');
+      $list.append(temp).listview('refresh');
     });
     $('li:hidden').show(); // http://jsperf.com/hidden-selector-vs-other
   }
@@ -45,7 +49,7 @@ $(function() {
   setInterval(function() {
     if (didScroll) {
       didScroll = false;
-      if ($(window).scrollTop() && $(window).scrollTop()+200 > $(document).height()-$(window).height()) {
+      if ($(window).scrollTop() && $(window).scrollTop() + 200 > $(document).height() - $(window).height()) {
         inc += 25;
         get_contact_json(inc);
       }

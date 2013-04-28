@@ -1,11 +1,11 @@
 jQuery Mobile Phone guide
 =========================
 
-This is an endless scrolling AJAX example.
+This is a simple endless scrolling AJAX example, coded using jQuery,
+jQuery Mobile and the Slim PHP framework.
 
-It uses jQuery, jQuery Mobile, PHP and MySQL.
 
-See http://orga.cat/guia to see it in action.
+See http://orga.cat/guide to see it in action.
 
 
 Author
