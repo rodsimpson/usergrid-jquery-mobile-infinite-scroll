@@ -3,7 +3,9 @@
 require 'Slim/Slim.php';
 \Slim\Slim::registerAutoloader();
 
+use Slim\Slim;
 $app = new Slim();
+
 $app->get('/entries(/:search(/:limit))', 'getEntries');
 $app->run();
 
